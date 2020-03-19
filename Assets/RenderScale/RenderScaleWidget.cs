@@ -16,9 +16,11 @@ public class RenderScaleWidget : MonoBehaviour
     private void Start()
     {
         pipelineAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
-        renderScaleSlider.onValueChanged.AddListener(OnValueChange);
-
-        OnValueChange(pipelineAsset.renderScale);
+        if (pipelineAsset != null)
+        {
+            renderScaleSlider.onValueChanged.AddListener(OnValueChange);
+            OnValueChange(pipelineAsset.renderScale);
+        }
     }
 
     private void OnValueChange(float value)
